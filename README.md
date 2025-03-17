@@ -1,17 +1,16 @@
-## Key Components
-
-- **QuantumCircuit_Module**: A wrapper around Qiskit quantum circuits for integration with PyTorch
-- **QuantumLayer**: PyTorch layer that integrates quantum circuits for processing
-- **Quantum2DLayer**: 2D version for processing image data with hybrid classical-quantum approach
-- **QuantumGenerator**: The main generator architecture with quantum-enhanced convolutional blocks# CycleGAN-Q: Quantum-Enhanced Image Translation
+**#CyleGAN-Q**
 
 ## Overview
 This project implements a novel approach to image-to-image translation using Quantum-enhanced CycleGAN. The framework combines classical convolutional neural networks with quantum circuit layers to explore potential advantages in image generation tasks, specifically for day-to-night and night-to-day image conversion.
 
 CycleGAN is a powerful image-to-image translation model that can learn to transform images from one domain to another without paired training examples. This quantum-enhanced version extends the classical CycleGAN by incorporating quantum computing elements through Qiskit, providing a novel approach to generative adversarial networks.
 
-![Sample Output](sample_outputs/sample_0.png)
+## Key Components
 
+- **QuantumCircuit_Module**: A wrapper around Qiskit quantum circuits for integration with PyTorch
+- **QuantumLayer**: PyTorch layer that integrates quantum circuits for processing
+- **Quantum2DLayer**: 2D version for processing image data with hybrid classical-quantum approach
+- **QuantumGenerator**: The main generator architecture with quantum-enhanced convolutional blocks# CycleGAN-Q: Quantum-Enhanced Image Translation
 ## Key Features
 - Quantum-enhanced convolutional layers integrated with PyTorch
 - Hybrid classical-quantum architecture for image-to-image translation
@@ -43,12 +42,12 @@ Our benchmarks compare the quantum-enhanced model against classical CycleGAN imp
 | Classical_GenH | 21.37 | 0.7845 |
 | Classical_GenZ | 21.05 | 0.7769 |
 
-![Performance Comparison](performance_comparison.png)
+
 
 ### Quantum Contribution Analysis
 The alpha parameter in the Quantum2DLayer controls the blend between classical and quantum processing. Lower values indicate higher quantum contribution:
 
-![Quantum Contribution](quantum_contribution.png)
+
 
 ## System Architecture
 
