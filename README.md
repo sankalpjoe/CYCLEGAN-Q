@@ -1,4 +1,4 @@
-**#CyleGAN-Q**
+# CyleGAN-Q
 
 ## Overview
 This project implements a novel approach to image-to-image translation using Quantum-enhanced CycleGAN. The framework combines classical convolutional neural networks with quantum circuit layers to explore potential advantages in image generation tasks, specifically for day-to-night and night-to-day image conversion.
