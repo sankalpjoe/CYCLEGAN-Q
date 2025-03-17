@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="100%">
+    <defs>
+      <style>
+        text { font-family: Arial, sans-serif; font-size: 12px; }
+        .box { fill: white; stroke: #333; stroke-width: 2; rx: 5; ry: 5; }
+        .quantum-box { fill: #e6f7ff; stroke: #0099ff; stroke-width: 2; rx: 5; ry: 5; }
+        .discriminator-box { fill: #fff0f5; stroke: #ff69b4; stroke-width: 2; rx: 5; ry: 5; }
+        .loss-box { fill: #fffacd; stroke: #daa520; stroke-width: 2; rx: 5; ry: 5; }
+        .day-img { fill: #ffec80; stroke: #333; stroke-width: 2; rx: 5; ry: 5; }
+        .night-img { fill: #4a6fa5; stroke: #333; stroke-width: 2; rx: 5; ry: 5; }
+        .arrow { stroke: #555; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+        .dashed-arrow { stroke: #777; stroke-width: 1.5; fill: none; stroke-dasharray: 5,3; marker-end: url(#arrowhead); }
+        .title { font-weight: bold; font-size: 18px; text-anchor: middle; }
+        .subtitle { font-weight: bold; font-size: 14px; text-anchor: middle; }
+        .label { font-size: 11px; text-anchor: middle; }
+        .loss-label { font-size: 11px; fill: #8b0000; text-anchor: middle; }
+        .group-box { fill: none; stroke: #ddd; stroke-width: 1.5; rx: 10; ry: 10; }
+      </style>
+      <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+        <polygon points="0 0, 10 3.5, 0 7" fill="#555" />
+      </marker>
+    </defs>
+    
+    <rect x="0" y="0" width="800" height="480" fill="white" />
+    <text x="400" y="25" class="title">Quantum CycleGAN Training Process</text>
+    
+    <!-- Day to Night Pathway -->
+    <rect x="60" y="50" width="680" height="160" class="group-box" />
+    <text x="400" y="65" class="subtitle">Day to Night Transformation</text>
+    
+    <!-- Night to Day Pathway -->
+    <rect x="60" y="230" width="680" height="160" class="group-box" />
+    <text x="400" y="245" class="subtitle">Night to Day Transformation</text>
+    
+    <!-- Day to Night Flow -->
+    <rect x="80" y="85" width="70" height="70" class="day-img" />
+    <text x="115" y="125" class="label">Day Image</text>
+    
+    <path d="M 150 120 L 190 120" class="arrow" />
+    
+    <rect x="190" y="90" width="100" height="60" class="quantum-box" />
+    <text x="240" y="125" class="label">Quantum Generator Z</text>
+    
+    <path d="M 290 120 L 330 120" class="arrow" />
+    
+    <rect x="330" y="85" width="70" height="70" class="night-img" />
+    <text x="365" y="125" class="label" fill="white">Night Image</text>
+    <text x="365" y="140" class="label" fill="white">(Fake)</text>
+    
+    <path d="M 400 120 L 440 120" class="arrow" />
+    
+    <rect x="440" y="90" width="100" height="60" class="quantum-box" />
+    <text x="490" y="125" class="label">Quantum Generator H</text>
+    
+    <path d="M 540 120 L 580 120" class="arrow" />
+    
+    <rect x="580" y="85" width="70" height="70" class="day-img" />
+    <text x="615" y="125" class="label">Day Image</text>
+    <text x="615" y="140" class="label">(Recon.)</text>
+    
+    <!-- Discriminator Day to Night -->
+    <rect x="330" y="175" width="70" height="40" class="discriminator-box" />
+    <text x="365" y="200" class="label">Discriminator Z</text>
+    
+    <path d="M 365 155 L 365 175" class="dashed-arrow" />
+    
+    <!-- Night to Day Flow -->
+    <rect x="80" y="265" width="70" height="70" class="night-img" />
+    <text x="115" y="305" class="label" fill="white">Night Image</text>
+    
+    <path d="M 150 300 L 190 300" class="arrow" />
+    
+    <rect x="190" y="270" width="100" height="60" class="quantum-box" />
+    <text x="240" y="305" class="label">Quantum Generator H</text>
+    
+    <path d="M 290 300 L 330 300" class="arrow" />
+    
+    <rect x="330" y="265" width="70" height="70" class="day-img" />
+    <text x="365" y="305" class="label">Day Image</text>
+    <text x="365" y="320" class="label">(Fake)</text>
+    
+    <path d="M 400 300 L 440 300" class="arrow" />
+    
+    <rect x="440" y="270" width="100" height="60" class="quantum-box" />
+    <text x="490" y="305" class="label">Quantum Generator Z</text>
+    
+    <path d="M 540 300 L 580 300" class="arrow" />
+    
+    <rect x="580" y="265" width="70" height="70" class="night-img" />
+    <text x="615" y="305" class="label" fill="white">Night Image</text>
+    <text x="615" y="320" class="label" fill="white">(Recon.)</text>
+    
+    <!-- Discriminator Night to Day -->
+    <rect x="330" y="355" width="70" height="40" class="discriminator-box" />
+    <text x="365" y="380" class="label">Discriminator H</text>
+    
+    <path d="M 365 335 L 365 355" class="dashed-arrow" />
+    
+    <!-- Loss Components -->
+    <rect x="190" y="410" width="420" height="60" class="group-box" />
+    <text x="400" y="425" class="subtitle">Loss Components</text>
+    
+    <rect x="200" y="435" width="100" height="25" class="loss-box" />
+    <text x="250" y="450" class="label">Adversarial Loss</text>
+    
+    <rect x="310" y="435" width="100" height="25" class="loss-box" />
+    <text x="360" y="450" class="label">Cycle Consistency</text>
+    
+    <rect x="420" y="435" width="80" height="25" class="loss-box" />
+    <text x="460" y="450" class="label">Identity Loss</text>
+    
+    <rect x="510" y="435" width="90" height="25" class="loss-box" />
+    <text x="555" y="450" class="label">Total Gen. Loss</text>
+    
+    <!-- Cycle Consistency Lines -->
+    <path d="M 115 155 L 115 175 L 650 175 L 650 120" class="dashed-arrow" />
+    <text x="380" y="175" class="loss-label">Cycle Consistency Loss</text>
+    
+    <path d="M 615 335 L 615 355 L 80 355 L 80 300" class="dashed-arrow" />
+    <text x="380" y="355" class="loss-label">Cycle Consistency Loss</text>
+    
+    <!-- Identity Loss Lines -->
+    <path d="M 115 85 L 115 50 L 490 50 L 490 90" class="dashed-arrow" />
+    <text x="300" y="50" class="loss-label">Identity Loss</text>
+    
+    <path d="M 115 335 L 115 390 L 240 390 L 240 330" class="dashed-arrow" />
+    <text x="178" y="390" class="loss-label">Identity Loss</text>
+  </svg>

@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%">
+    <defs>
+      <style>
+        text { font-family: Arial, sans-serif; font-size: 12px; }
+        .box { fill: white; stroke: #333; stroke-width: 2; rx: 5; ry: 5; }
+        .quantum-box { fill: #e6f7ff; stroke: #0099ff; stroke-width: 2; rx: 5; ry: 5; }
+        .classical-box { fill: #f0f0f0; stroke: #555; stroke-width: 2; rx: 5; ry: 5; }
+        .arrow { stroke: #555; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+        .title { font-weight: bold; font-size: 18px; text-anchor: middle; }
+        .label { font-size: 11px; text-anchor: middle; }
+        .big-label { font-size: 14px; font-weight: bold; text-anchor: middle; }
+      </style>
+      <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+        <polygon points="0 0, 10 3.5, 0 7" fill="#555" />
+      </marker>
+      <linearGradient id="quantum-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#f0f0f0;stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#e6f7ff;stop-opacity:1" />
+      </linearGradient>
+    </defs>
+    
+    <rect x="0" y="0" width="800" height="500" fill="white" />
+    <text x="400" y="25" class="title">Quantum CycleGAN Architecture</text>
+
+    <rect x="50" y="100" width="80" height="80" class="box" />
+    <text x="90" y="145" class="big-label">Input</text>
+    <text x="90" y="165" class="label">Image</text>
+    
+    <path d="M 130 140 L 160 140" class="arrow" />
+  
+    <rect x="160" y="110" width="100" height="60" class="classical-box" />
+    <text x="210" y="140" class="label">Initial Conv</text>
+    <text x="210" y="155" class="label">7x7, Stride 1</text>
+    
+    <path d="M 260 140 L 290 140" class="arrow" />
+  
+    <rect x="290" y="110" width="100" height="60" fill="url(#quantum-gradient)" stroke="#0099ff" stroke-width="2" rx="5" ry="5" />
+    <text x="340" y="140" class="label">Quantum Down Block</text>
+    <text x="340" y="155" class="label">3x3, Stride 2</text>
+    
+    <path d="M 390 140 L 420 140" class="arrow" />
+  
+    <rect x="420" y="110" width="100" height="60" class="classical-box" />
+    <text x="470" y="140" class="label">Classical Down Block</text>
+    <text x="470" y="155" class="label">3x3, Stride 2</text>
+    
+    <path d="M 520 140 L 550 140" class="arrow" />
+  
+    <rect x="550" y="80" width="100" height="120" class="box" />
+    <text x="600" y="130" class="big-label">Residual</text>
+    <text x="600" y="150" class="label">Blocks (9x)</text>
+    
+    <path d="M 650 140 L 680 140" class="arrow" />
+  
+    <rect x="680" y="100" width="80" height="80" class="box" />
+    <text x="720" y="145" class="big-label">Output</text>
+    <text x="720" y="165" class="label">Image</text>
+  
+    <rect x="100" y="270" width="600" height="180" fill="#f9f9f9" stroke="#ddd" stroke-width="2" rx="10" ry="10" />
+    <text x="400" y="290" class="big-label">Quantum Residual Block Detail</text>
+    
+    <path d="M 150 360 L 650 360" stroke="#ddd" stroke-width="1" stroke-dasharray="5,5" />
+    
+    <rect x="180" y="320" width="120" height="40" fill="url(#quantum-gradient)" stroke="#0099ff" stroke-width="2" rx="5" ry="5" />
+    <text x="240" y="340" class="label">Quantum2DLayer</text>
+    <text x="240" y="355" class="label">3x3 Convolution</text>
+    
+    <path d="M 300 340 L 340 340" class="arrow" />
+    
+    <rect x="340" y="320" width="120" height="40" class="classical-box" />
+    <text x="400" y="340" class="label">InstanceNorm + ReLU</text>
+    
+    <path d="M 460 340 L 500 340" class="arrow" />
+    
+    <rect x="500" y="320" width="120" height="40" class="classical-box" />
+    <text x="560" y="340" class="label">Classical Conv 3x3</text>
+    
+    <path d="M 560" y="370" class="arrow" />
+    
+    <rect x="400" y="400" width="120" height="30" class="box" />
+    <text x="460" y="420" class="label">Add (Skip Connection)</text>
+    
+    <path d="M 150 340 L 180 340" class="arrow" />
+    <path d="M 150 340 L 150 420 L 400 420" class="arrow" style="marker-end: none" />
+    <path d="M 560 340 L 560 370 L 560 400" class="arrow" />
+    <path d="M 520 420 L 650 420" class="arrow" />
+  
+    <rect x="50" y="230" width="80" height="30" fill="url(#quantum-gradient)" stroke="#0099ff" stroke-width="2" rx="5" ry="5" />
+    <text x="90" y="250" class="label">Quantum Component</text>
+    
+    <rect x="50" y="270" width="80" height="30" class="classical-box" />
+    <text x="90" y="290" class="label">Classical Component</text>
+  </svg>
