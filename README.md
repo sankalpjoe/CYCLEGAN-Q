@@ -131,37 +131,137 @@ flowchart TB
 
 ### Quantum Circuit Diagram
 
-```mermaid
-flowchart LR
-    subgraph "Variational Quantum Circuit"
-        subgraph "Data Encoding"
-            A[Classical Input] --> B[Ry Gates]
-        end
-        
-        subgraph "Variational Layers (Repeated n_layers times)"
-            B --> C[Rx Gates]
-            C --> D[Ry Gates]
-            D --> E[Rz Gates]
-            E --> F[CNOT Entanglement]
-            F --> G[Next Layer / Measurement]
-        end
-        
-        subgraph "Measurement & Post-processing"
-            G --> H[State Vector]
-            H --> I[Probabilities]
-            I --> J[Classical Output]
-        end
-    end
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="100%">
+    <defs>
+      <style>
+        text { font-family: Arial, sans-serif; font-size: 14px; }
+        .qubit-label { font-weight: bold; text-anchor: end; }
+        .gate { fill: white; stroke: black; stroke-width: 2; }
+        .gate-label { text-anchor: middle; dominant-baseline: middle; }
+        .rx { fill: #9fc; }
+        .ry { fill: #fc9; }
+        .rz { fill: #c9f; }
+        .cnot-control { fill: black; }
+        .cnot-target { fill: none; stroke: black; stroke-width: 2; }
+        .measure { fill: #f9c; }
+        .input { fill: #ccf; }
+        .section-label { font-weight: bold; font-size: 16px; text-anchor: middle; }
+      </style>
+    </defs>
     
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    style J fill:#bbf,stroke:#333,stroke-width:2px
-    style B fill:#ff9,stroke:#333,stroke-width:2px
-    style C fill:#9f9,stroke:#333,stroke-width:2px
-    style D fill:#9f9,stroke:#333,stroke-width:2px
-    style E fill:#9f9,stroke:#333,stroke-width:2px
-    style F fill:#f99,stroke:#333,stroke-width:2px
-    style H fill:#9ff,stroke:#333,stroke-width:2px
-```
+    <rect x="0" y="0" width="800" height="400" fill="#f8f8f8" />
+    <text x="400" y="20" class="section-label">Quantum Circuit for Image Processing</text>
+
+    <text x="123.63636363636364" y="30" class="section-label">Input Encoding</text>
+    <text x="330.90909090909093" y="30" class="section-label">Parametrized Gates</text>
+    <text x="572.7272727272727" y="30" class="section-label">Measurement</text>
+  
+      <text x="10" y="104" class="qubit-label">q0</text>
+      <line x1="20" y1="104" x2="780" y2="104" stroke="black" stroke-width="2" />
+    
+      <text x="10" y="168" class="qubit-label">q1</text>
+      <line x1="20" y1="168" x2="780" y2="168" stroke="black" stroke-width="2" />
+    
+      <text x="10" y="232" class="qubit-label">q2</text>
+      <line x1="20" y1="232" x2="780" y2="232" stroke="black" stroke-width="2" />
+    
+      <text x="10" y="296" class="qubit-label">q3</text>
+      <line x1="20" y1="296" x2="780" y2="296" stroke="black" stroke-width="2" />
+    
+      <rect x="40.727272727272734" y="81.6" width="35.839999999999996" height="44.8" rx="5" class="input" />
+      <text x="58.647272727272735" y="104" class="gate-label">in0</text>
+    
+      <rect x="89.0909090909091" y="81.6" width="44.8" height="44.8" rx="5" class="gate ry" />
+      <text x="111.4909090909091" y="104" class="gate-label">Ry</text>
+    
+      <rect x="40.727272727272734" y="145.6" width="35.839999999999996" height="44.8" rx="5" class="input" />
+      <text x="58.647272727272735" y="168" class="gate-label">in1</text>
+    
+      <rect x="89.0909090909091" y="145.6" width="44.8" height="44.8" rx="5" class="gate ry" />
+      <text x="111.4909090909091" y="168" class="gate-label">Ry</text>
+    
+      <rect x="40.727272727272734" y="209.6" width="35.839999999999996" height="44.8" rx="5" class="input" />
+      <text x="58.647272727272735" y="232" class="gate-label">in2</text>
+    
+      <rect x="89.0909090909091" y="209.6" width="44.8" height="44.8" rx="5" class="gate ry" />
+      <text x="111.4909090909091" y="232" class="gate-label">Ry</text>
+    
+      <rect x="40.727272727272734" y="273.6" width="35.839999999999996" height="44.8" rx="5" class="input" />
+      <text x="58.647272727272735" y="296" class="gate-label">in3</text>
+    
+      <rect x="89.0909090909091" y="273.6" width="44.8" height="44.8" rx="5" class="gate ry" />
+      <text x="111.4909090909091" y="296" class="gate-label">Ry</text>
+    
+      <rect x="227.27272727272728" y="81.6" width="44.8" height="44.8" rx="5" class="gate rx" />
+      <text x="249.6727272727273" y="104" class="gate-label">Rx</text>
+      
+      <rect x="296.3636363636364" y="81.6" width="44.8" height="44.8" rx="5" class="gate ry" />
+      <text x="318.76363636363635" y="104" class="gate-label">Ry</text>
+      
+      <rect x="365.4545454545455" y="81.6" width="44.8" height="44.8" rx="5" class="gate rz" />
+      <text x="387.8545454545455" y="104" class="gate-label">Rz</text>
+    
+      <rect x="227.27272727272728" y="145.6" width="44.8" height="44.8" rx="5" class="gate rx" />
+      <text x="249.6727272727273" y="168" class="gate-label">Rx</text>
+      
+      <rect x="296.3636363636364" y="145.6" width="44.8" height="44.8" rx="5" class="gate ry" />
+      <text x="318.76363636363635" y="168" class="gate-label">Ry</text>
+      
+      <rect x="365.4545454545455" y="145.6" width="44.8" height="44.8" rx="5" class="gate rz" />
+      <text x="387.8545454545455" y="168" class="gate-label">Rz</text>
+    
+      <rect x="227.27272727272728" y="209.6" width="44.8" height="44.8" rx="5" class="gate rx" />
+      <text x="249.6727272727273" y="232" class="gate-label">Rx</text>
+      
+      <rect x="296.3636363636364" y="209.6" width="44.8" height="44.8" rx="5" class="gate ry" />
+      <text x="318.76363636363635" y="232" class="gate-label">Ry</text>
+      
+      <rect x="365.4545454545455" y="209.6" width="44.8" height="44.8" rx="5" class="gate rz" />
+      <text x="387.8545454545455" y="232" class="gate-label">Rz</text>
+    
+      <rect x="227.27272727272728" y="273.6" width="44.8" height="44.8" rx="5" class="gate rx" />
+      <text x="249.6727272727273" y="296" class="gate-label">Rx</text>
+      
+      <rect x="296.3636363636364" y="273.6" width="44.8" height="44.8" rx="5" class="gate ry" />
+      <text x="318.76363636363635" y="296" class="gate-label">Ry</text>
+      
+      <rect x="365.4545454545455" y="273.6" width="44.8" height="44.8" rx="5" class="gate rz" />
+      <text x="387.8545454545455" y="296" class="gate-label">Rz</text>
+    <circle cx="434.54545454545456" cy="104" r="9.6" class="cnot-control" /><line x1="434.54545454545456" y1="104" x2="434.54545454545456" y2="168" stroke="black" stroke-width="2" />
+      <circle cx="434.54545454545456" cy="168" r="19.2" class="cnot-target" />
+      <line x1="415.3454545454546" y1="168" x2="453.74545454545455" y2="168" stroke="black" stroke-width="2" />
+      <line x1="434.54545454545456" y1="148.8" x2="434.54545454545456" y2="187.2" stroke="black" stroke-width="2" />
+    <circle cx="434.54545454545456" cy="168" r="9.6" class="cnot-control" /><line x1="434.54545454545456" y1="168" x2="434.54545454545456" y2="232" stroke="black" stroke-width="2" />
+      <circle cx="434.54545454545456" cy="232" r="19.2" class="cnot-target" />
+      <line x1="415.3454545454546" y1="232" x2="453.74545454545455" y2="232" stroke="black" stroke-width="2" />
+      <line x1="434.54545454545456" y1="212.8" x2="434.54545454545456" y2="251.2" stroke="black" stroke-width="2" />
+    <circle cx="434.54545454545456" cy="232" r="9.6" class="cnot-control" /><line x1="434.54545454545456" y1="232" x2="434.54545454545456" y2="296" stroke="black" stroke-width="2" />
+      <circle cx="434.54545454545456" cy="296" r="19.2" class="cnot-target" />
+      <line x1="415.3454545454546" y1="296" x2="453.74545454545455" y2="296" stroke="black" stroke-width="2" />
+      <line x1="434.54545454545456" y1="276.8" x2="434.54545454545456" y2="315.2" stroke="black" stroke-width="2" />
+    <circle cx="503.6363636363636" cy="296" r="9.6" class="cnot-control" />
+    <path d="M 503.6363636363636 296 
+             L 503.6363636363636 324.8
+             Q 561.2363636363636 324.8 561.2363636363636 168
+             L 561.2363636363636 75.2
+             Q 561.2363636363636 104 503.6363636363636 104" fill="none" stroke="black" stroke-width="2" />
+  
+    <circle cx="503.6363636363636" cy="104" r="19.2" class="cnot-target" />
+    <line x1="484.43636363636364" y1="104" x2="522.8363636363637" y2="104" stroke="black" stroke-width="2" />
+    <line x1="503.6363636363636" y1="84.8" x2="503.6363636363636" y2="123.2" stroke="black" stroke-width="2" />
+  
+      <rect x="641.8181818181819" y="81.6" width="44.8" height="44.8" rx="5" class="gate measure" />
+      <text x="664.2181818181818" y="104" class="gate-label">M</text>
+    
+      <rect x="641.8181818181819" y="145.6" width="44.8" height="44.8" rx="5" class="gate measure" />
+      <text x="664.2181818181818" y="168" class="gate-label">M</text>
+    
+      <rect x="641.8181818181819" y="209.6" width="44.8" height="44.8" rx="5" class="gate measure" />
+      <text x="664.2181818181818" y="232" class="gate-label">M</text>
+    
+      <rect x="641.8181818181819" y="273.6" width="44.8" height="44.8" rx="5" class="gate measure" />
+      <text x="664.2181818181818" y="296" class="gate-label">M</text>
+    </svg>
 
 ## Installation
 
