@@ -186,7 +186,7 @@ The project demonstrates several interesting findings:
 5. **Image Detail Preservation**: Experimental results suggest improved preservation of fine details in some cases.
 
 6. **Color Distribution**: The quantum approach potentially generates more diverse color transformations compared to classical methods.
-``flowchart TD
+```flowchart TD
     subgraph External_Applications["External Applications (Gray - Entry Points)"]
         style External_Applications fill:#d3d3d3,stroke:#333,stroke-width:2px,color:#000
         Apps[Apps & Repos<br>(GitHub/GitLab URLs, Live Deployments)]:::external
@@ -267,7 +267,7 @@ The project demonstrates several interesting findings:
     classDef integration fill:#ffd700,stroke:#ff4500
     classDef engine fill:#dda0dd,stroke:#4b0082
     classDef note fill:#f0f0f0,stroke:#808080,stroke-dasharray: 5 5
-``
+```
 ## Future Work
 
 - Implement larger quantum circuits with more qubits
