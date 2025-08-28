@@ -186,6 +186,7 @@ The project demonstrates several interesting findings:
 5. **Image Detail Preservation**: Experimental results suggest improved preservation of fine details in some cases.
 
 6. **Color Distribution**: The quantum approach potentially generates more diverse color transformations compared to classical methods.
+
 ```flowchart TD
     subgraph External_Applications["External Applications (Gray - Entry Points)"]
         style External_Applications fill:#d3d3d3,stroke:#333,stroke-width:2px,color:#000
@@ -288,3 +289,94 @@ This project builds upon the CycleGAN architecture and integrates it with quantu
 - Qiskit documentation: [Qiskit.org](https://qiskit.org/)
 - PyTorch documentation: [PyTorch.org](https://pytorch.org/)
 
+```
+flowchart TD
+    subgraph External_Applications["External Applications (Gray - Entry Points)"]
+        style External_Applications fill:#d3d3d3,stroke:#333,stroke-width:2px,color:#000
+        Apps[Apps & Repos<br>(GitHub/GitLab URLs, Live Deployments)]:::external
+    end
+
+    subgraph API_Gateway["API Gateway & Authentication (Gray - Secure Front Door)"]
+        style API_Gateway fill:#d3d3d3,stroke:#333,stroke-width:2px,color:#000
+        Gateway[API Gateway<br>(REST APIs, Token Mgmt, Rate Limiting)]:::gateway
+        Auth[Authentication Layer<br>(OAuth, MFA, Input Sanitization)]:::gateway
+        Gateway -->|Secure Requests| Auth
+    end
+
+    subgraph Morpheus_Orchestrator["NVIDIA Morpheus Orchestrator (Blue - Main AI Brain)"]
+        style Morpheus_Orchestrator fill:#add8e6,stroke:#00008b,stroke-width:2px,color:#000
+        Orchestrator[Orchestrator Core<br>(Real-time Coordination, Task Dispatching, Error Handling)]:::orchestrator
+        Morpheus_Int[Morpheus Interface<br>(Integrates NeMo, RAPIDS, NIMS for AI Processing)]:::orchestrator
+        Orchestrator -->|AI Model Calls| Morpheus_Int
+        note1[Note: Scalable to handle 1000+ repos; uses Kafka for sub-second messaging]:::note
+        Orchestrator --> note1
+    end
+
+    subgraph Security_Agents["Specialized AI Agents (Green - Vulnerability Detection)"]
+        style Security_Agents fill:#90ee90,stroke:#006400,stroke-width:2px,color:#000
+        SAST[SAST Agent<br>(Source Code Scans: SQL Inj, XSS, Buffer Overflows)]:::agent
+        DAST[DAST Agent<br>(Runtime Tests: Auth Bypasses, Session Flaws)]:::agent
+        CVE_Matcher[CVE Matcher Agent<br>(Dependency Checks vs MITRE/NVD)]:::agent
+        Container_Scanner[Container Scanner Agent<br>(Docker/K8s Config Analysis)]:::agent
+        Fix_Generator[Fix Generator Agent<br>(AI Auto-Fixes with Code Gen)]:::agent
+        Compliance[Compliance Agent<br>(Standards: OWASP, GDPR, PCI-DSS)]:::agent
+        Report[Report Agent<br>(Human-Readable Docs & Alerts)]:::agent
+        SAST -->|Findings| Fix_Generator
+        DAST -->|Findings| Fix_Generator
+        CVE_Matcher -->|Findings| Fix_Generator
+        Container_Scanner -->|Findings| Fix_Generator
+        Fix_Generator -->|Validated Fixes| Compliance
+        Compliance -->|Compliant Outputs| Report
+        note2[Note: Agents communicate via Apache Kafka; auto-retry on failures]:::note
+        Fix_Generator --> note2
+    end
+
+    subgraph CVE_Integrations["CVE Database Integration (Orange - External Data)"]
+        style CVE_Integrations fill:#ffd700,stroke:#ff4500,stroke-width:2px,color:#000
+        CVE_DB[CVE Databases<br>(MITRE, NVD, Vulners APIs; Real-time Queries)]:::integration
+        Scanners[Integrated Scanners<br>(OWASP ZAP, Semgrep, Bandit)]:::integration
+        CVE_DB -->|Vuln Data| Scanners
+    end
+
+    subgraph AutoFix_Reporting["Auto-Fix & Reporting Engine (Purple - Outputs)"]
+        style AutoFix_Reporting fill:#dda0dd,stroke:#4b0082,stroke-width:2px,color:#000
+        AutoFix[Auto-Fix Engine<br>(Generates PRs/Patches, Integrates with Git)]:::engine
+        Reporting[Reporting Engine<br>(Dashboards, Alerts, Compliance Reports)]:::engine
+        AutoFix -->|Fixed Code| Reporting
+        note3[Note: Uses Docker for deployment; Redis for caching reports]:::note
+        Reporting --> note3
+    end
+
+    %% Connections with directions and labels
+    Apps -->|API Calls/ Webhooks| Gateway
+    Auth -->|Authenticated Flow| Orchestrator
+    Morpheus_Int -->|Triggers Agents| SAST
+    Morpheus_Int -->|Triggers Agents| DAST
+    Morpheus_Int -->|Triggers Agents| CVE_Matcher
+    Morpheus_Int -->|Triggers Agents| Container_Scanner
+    Morpheus_Int -->|Triggers Agents| Fix_Generator
+    Morpheus_Int -->|Triggers Agents| Compliance
+    Morpheus_Int -->|Triggers Agents| Report
+    Orchestrator -->|Vuln Queries| CVE_DB
+    Scanners -->|Enhanced Scans| Security_Agents
+    Report -->|Outputs| AutoFix
+    AutoFix -->|Patches/Reports| Reporting
+    Reporting -->|Feedback Loop| Orchestrator
+
+    %% Custom class styles for color coding
+    classDef external fill:#d3d3d3,stroke:#333
+    classDef gateway fill:#d3d3d3,stroke:#333
+    classDef orchestrator fill:#add8e6,stroke:#00008b
+    classDef agent fill:#90ee90,stroke:#006400
+    classDef integration fill:#ffd700,stroke:#ff4500
+    classDef engine fill:#dda0dd,stroke:#4b0082
+    classDef note fill:#f0f0f0,stroke:#808080,stroke-dasharray: 5 5
+```
+```
+
+### Quick Tips
+- **Command/Syntax to Add**: The "command" is just ```mermaid at the start of the code block (as shown above). That's what tells GitHub to render it as a diagram.
+- **Testing**: Commit this to your repo's README.md, and GitHub will auto-render it on the page. If colors or styles don't show perfectly (GitHub's Mermaid support can be picky with advanced styling), simplify the `style` and `classDef` lines.
+- **If It Doesn't Render**: Ensure your repo is public or you're viewing it logged in. For more control, use tools like mermaid.live to preview/export as an image and embed that instead.
+
+This should slot right into your GitHub repo without issues – hit me up if you need adjustments!
